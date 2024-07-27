@@ -3,7 +3,7 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-10">
+    <div class="col-md-12">
 
       {% if user.is_authenticated %}
 
@@ -22,12 +22,13 @@
                   <th scope="col">State</th>
                   <th scope="col">Zip Code</th>
                   <th scope="col">Created At</th>
+                  <th scope="col">Actions</th>
                 </tr>
               </thead>
               <tbody>
                 {% for record in records %}
                   <tr>
-                    <td><a href="{% url 'record' record.id %}">{{ record.id }}</a></td>
+                    <td>{{ record.id }}</td>
                     <td>{{ record.first_name }} {{ record.last_name }}</td>
                     <td>{{ record.email }}</td>
                     <td>{{ record.phone }}</td>
@@ -35,8 +36,10 @@
                     <td>{{ record.city }}</td>
                     <td>{{ record.state }}</td>
                     <td>{{ record.zipcode }}</td>
-         <td>{{ record.created_at|date:"Y-m-d H:i:s" }}</td>
-
+                    <td>{{ record.created_at|date:"Y-m-d H:i:s" }}</td>
+                    <td>
+                      <a href="{% url 'record' record.id %}" class="btn btn-primary btn-sm">View</a>
+                    </td>
                   </tr>
                 {% endfor %}
               </tbody>
