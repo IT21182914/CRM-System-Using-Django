@@ -1,6 +1,6 @@
 # First Python Django Framework Project.
 
-# Django Forms, Registration, Login, Logout, CRUD Operations with Bootstrap
+# Django Forms, Registration, Login, Logout, CRUD Operations with Bootstrap & MySQL database
 
 # Screenshots
 
