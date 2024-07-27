@@ -5,34 +5,48 @@
 
 {% if user.is_authenticated %}
 
-    <h1>Hello World!</h1>
+    <h1>Records....</h1>
+    {% if records %}
+        {% for record in records %}
+            {{ record.first_name }} {{ record.last_name }}<br />
+            {{ record.email }}<br />
+            {{ record.phone }}<br />
+            {{ record.address }}<br />
+            {{ record.city }}<br />
+            {{ record.state }}<br />
+            {{ record.zip }}<br />
+            {{ record.country }}
+            {{ record.created_at }}<br />
 
+
+            <br />
+        {% endfor %}
     {% else %}
+        <p>No records found.</p>
+    {% endif %}
 
+{% else %}
 
-<h1> Login</h1>
-<br />
-<form method="POST" action="{% url 'home' %}">
-    {% csrf_token %}
-<form>
-  <div class="mb-3">
-      <label>
-          <input type="text" class="form-control" name="username" placeholder="Username" required >
-      </label>
+    <h1>Login</h1>
+    <br />
+    <form method="POST" action="{% url 'home' %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label>
+                <input type="text" class="form-control" name="username" placeholder="Username" required>
+            </label>
+        </div>
 
-  </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1"></label>
+            <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" required>
+        </div>
+        <br />
+        <button type="submit" class="btn btn-secondary">Login</button>
+    </form>
 
-  <div class="mb-3">
-
-      <label for="exampleInputPassword1"></label><input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password" required>
-  </div>
-<br />
-  <button type="submit" class="btn btn-secondary">Login</button>
-</form>
-
-
-</form>
+{% endif %}
 
 </div>
-{% endif %}
+
 {% endblock %}
